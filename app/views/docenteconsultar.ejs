@@ -1,0 +1,69 @@
+<% include header %>
+<br>
+<a href="/admin/insertar">Insertar</a>
+<br>
+<div class="row row-centered">
+  <div class="col-md-8 col-centered">
+    Asignaturas:
+  </div>
+</div>
+
+<form action="/admin/administrar_asignatura" class="" method="get">
+
+  <%for(i in asignaturas){%>
+    <hr>
+    <div class="row row-centered">
+      <div class="col-md-4 col-centered">
+        Asignatura
+      </div>
+      <div class="col-md-2 col-centered">
+        Ver datos
+      </div>
+      <div class="col-md-2 col-centered">
+        Realizar Pregunta
+      </div>
+      <div class="col-md-2 col-centered">
+        Gestionar Pregunta
+      </div>
+      <div class="col-md-2 col-centered">
+        Analizar Pregunta
+      </div>
+    </div>
+    <div class="row row-centered">
+      <div class="col-md-4">
+        <%=asignaturas[i].id%>
+        <br>
+        Nombre:
+        <%=asignaturas[i].nombre%>
+        <br>
+        Codigo:
+        <%=asignaturas[i].codigo%>
+        <br>
+        paralelo:
+        <%=asignaturas[i].paralelo%>
+        <br>
+        <input class="form-control" type="radio" name="idasignatura" value="<%=asignaturas[i].id%>">
+      </div>
+      <div class="col-md-2">
+        <a href='/consultaruno/<%=asignaturas[i].id%>/<%=asignaturas[i].paralelo%>'>Ver datos</a>
+      </div>
+      <div class="col-md-2">
+        <a href='/docente/realizar/<%=asignaturas[i].id%>/<%=asignaturas[i].paralelo%>'>Realizar pregunta</a>
+      </div>
+      <div class="col-md-2">
+        <a href='/docente/gestionar/<%=asignaturas[i].id%>/<%=asignaturas[i].paralelo%>'>Gestionar pregunta</a>
+      </div>
+      <div class="col-md-2">
+        <a href="/docente/seleccionar/fecha/<%=asignaturas[i].id%>/<%=asignaturas[i].paralelo%>">Analizar Preguntas</a>
+      </div>
+    </div>
+    <br>
+    <hr>
+  <%}%>
+  <input class="form-control" name="name" type="submit" value="Ir a la asignatura seleccionada">
+</form>
+<form class="" action="/signout" method="post">
+  <input class=" col-md-2 col-md-offset-5 btn btn-danger " type="submit" name="sign out" value="Sign out"></div>
+</form>
+<% include linkmenudocente %>
+<% include footer %>
