@@ -14,4 +14,5 @@ exports.consultas = {
         })
         .save()
     }
+	
   }
